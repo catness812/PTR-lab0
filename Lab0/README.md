@@ -20,11 +20,10 @@ radius.
 - [x] Write a function that extracts a given number of randomly selected elements
 from a list.
 - [x] Write a function that returns the first $n$ elements of the Fibonacci sequence.
-- [ ] Write a function that, given a dictionary, would translate a sentence. Words
+- [x] Write a function that, given a dictionary, would translate a sentence. Words
 not found in the dictionary need not be translated.
-- [ ] Write a function that receives as input three digits and arranges them in an
-order that would create the smallest possible number. Numbers cannot start with a 0.
-- [ ] Write a function that would rotate a list $n$ places to the left.
+- [x] Write a function that receives as input three digits and arranges them in an order that would create the smallest possible number. Numbers cannot start with a 0.
+- [x] Write a function that would rotate a list $n$ places to the left.
 - [ ] Write a function that lists all tuples $a, b, c$ such that $a^2+b^2=c^2$ and $a,b\leq 20$.
 - [ ] Write a function that eliminates consecutive duplicates in a list.
 - [ ] Write a function that, given an array of strings, will return the words that can
