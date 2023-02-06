@@ -65,11 +65,11 @@ defmodule W2 do
     list
   end
 
-  # currently not working
+  # currently not working (properly at least)
   def listRightAngleTriangles(limit) do
     Enum.flat_map(1..limit, &generate_triple/1)
   end
-  defp generate_triple(a) do
+  defp nonIntegerTriple(a) do
     Enum.filter(1..a, fn b -> {is_integer(:math.sqrt(a**2 + b**2))} end)
     Enum.map(1..a, fn b -> {a, b, :math.sqrt(a**2 + b**2)} end)
   end
