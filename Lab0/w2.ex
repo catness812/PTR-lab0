@@ -65,13 +65,25 @@ defmodule W2 do
     list
   end
 
-  # currently not working (properly at least)
   def listRightAngleTriangles(limit) do
-    Enum.flat_map(1..limit, &generate_triple/1)
+    Enum.flat_map(1..limit, &pythagoreanTriples/1)
   end
-  defp nonIntegerTriple(a) do
-    Enum.filter(1..a, fn b -> {is_integer(:math.sqrt(a**2 + b**2))} end)
-    Enum.map(1..a, fn b -> {a, b, :math.sqrt(a**2 + b**2)} end)
+  defp pythagoreanTriples(a) do
+    Enum.filter(1..a, fn b -> _c = is_integer(toInt(:math.sqrt(a**2 + b**2))) end)
+    |> Enum.map(fn b -> c = toInt(:math.sqrt(a**2 + b**2))
+    {a, b, c} end)
+  end
+  defp toInt(float) do
+    truncated = trunc(float)
+    if truncated == float do
+      truncated
+    else
+      float
+    end
+  end
+
+  def removeConsecutiveDuplicates(list) do
+    Enum.dedup(list)
   end
 
 end
