@@ -62,7 +62,7 @@ dictionary = {
 - [x] Write a function that receives as input three digits and arranges them in an order that would create the smallest possible number. Numbers cannot start with a 0.
 ```
 smallestNumber(4, 5, 3) -> 345
-2 smallestNumber(0, 3, 4) -> 304
+smallestNumber(0, 3, 4) -> 304
 ```
 - [x] Write a function that would rotate a list $n$ places to the left.
 ```
@@ -81,7 +81,7 @@ removeConsecutiveDuplicates([1, 2, 2, 2, 4, 8, 4]) -> [1, 2, 4, 8, 4]
 ```
 - [x] Write a function that, given an array of strings, will return the words that can be typed using only one row of the letters on an English keyboard layout.
 ```
-lineWords (["Hello","Alaska","Dad","Peace"]) -> ["Alaska","Dad"]
+lineWords(["Hello","Alaska","Dad","Peace"]) -> ["Alaska","Dad"]
 ```
 - [x] Create a pair of functions to encode and decode strings using the Caesar cipher.
 ```
@@ -106,7 +106,7 @@ groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]) -> {
 - [x] Write a function to find the longest common prefix string amongst a list of strings.
 ```
 commonPrefix(["flower", "flow", "flight"]) -> "fl"
- commonPrefix(["alpha", "beta", "gamma"]) -> ""
+commonPrefix(["alpha", "beta", "gamma"]) -> ""
 ```
 - [x] Write a function to convert arabic numbers to roman numerals.
 ```
@@ -116,4 +116,62 @@ toRoman("13") -> "XIII"
 ```
 factorize(13) -> [13]
 factorize(42) -> [2, 3, 7]
+```
+
+## Week 3 – An Actor is Born
+
+### Minimal Task
+
+- [x] Create an actor that prints on the screen any message it receives.
+- [x] Create an actor that returns any message it receives, while modifying it. Infer the modification from the following example:
+```
+> Pid ! 10. % Integers
+Received : 11
+> Pid ! "Hello". % Strings
+Received : hello
+> Pid ! {10 , "Hello"}. % Anything else
+Received : I don’t know how to HANDLE this !
+```
+- [x] Create a two actors, actor one ”monitoring” the other. If the second actor stops, actor one gets notified via a message.
+- [x] Create an actor which receives numbers and with each request prints out the current average.
+```
+> Pid = spawn(foo, averager, [0]).
+Current average is 0
+> Pid ! 10.
+Current average is 5.0
+> Pid ! 10.
+Current average is 7.5
+> Pid ! 10.
+Current average is 8.75
+```
+- [ ] Create an actor which maintains a simple FIFO queue. You should write helper functions to create an API for the user, which hides how the queue is implemented.
+```
+Pid = new_queue()
+push(Pid, 42) -> ok
+pop (Pid) -> 42
+```
+- [ ] Create a module that would implement a semaphore.
+```
+Mutex = create_semaphore(0),
+acquire(Mutex),
+%% critical section
+release(Mutex),
+%% rest of the program
+```
+- [ ] Create a module that would perform some risky business. Start by creating a scheduler actor. When receiving a task to do, it will create a worker node that will perform the task. Given the nature of the task, the worker node is prone to crashes (task completion rate $50\%$). If the scheduler detects a crash, it will log it and restart the worker node. If the worker node finishes successfully, it should print the result.
+```
+> Scheduler = create_scheduler()
+> Scheduler ! "Hello"
+Task succesful: Miau
+> Scheduler ! "How are you"
+Task fail
+Task fail
+Task fail
+Task succesful: Miau
+```
+- [ ] Create a module that would implement a doubly linked list where each node of the list is an actor.
+```
+DLList = create_dllist ([3, 4, 5, 42]),
+traverse(DLList) -> [3, 4, 5, 42],
+inverse(DLList) -> [42, 5, 4, 3].
 ```
