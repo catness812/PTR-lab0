@@ -6,6 +6,6 @@ This repository contains the laboratory works for the Real-Time Programming cour
 | :---:  | :---:              |
 | Week 1 | :white_check_mark: |
 | Week 2 | :white_check_mark: |
-| Week 3 | :on:               |
+| Week 3 | :white_check_mark: |
 | Week 4 | :soon:             |
 | Week 5 | :soon:             |

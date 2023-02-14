@@ -144,13 +144,13 @@ Current average is 7.5
 > Pid ! 10.
 Current average is 8.75
 ```
-- [ ] Create an actor which maintains a simple FIFO queue. You should write helper functions to create an API for the user, which hides how the queue is implemented.
+- [x] Create an actor which maintains a simple FIFO queue. You should write helper functions to create an API for the user, which hides how the queue is implemented.
 ```
 Pid = new_queue()
 push(Pid, 42) -> ok
 pop (Pid) -> 42
 ```
-- [ ] Create a module that would implement a semaphore.
+- [x] Create a module that would implement a semaphore.
 ```
 Mutex = create_semaphore(0),
 acquire(Mutex),
@@ -158,7 +158,7 @@ acquire(Mutex),
 release(Mutex),
 %% rest of the program
 ```
-- [ ] Create a module that would perform some risky business. Start by creating a scheduler actor. When receiving a task to do, it will create a worker node that will perform the task. Given the nature of the task, the worker node is prone to crashes (task completion rate $50\%$). If the scheduler detects a crash, it will log it and restart the worker node. If the worker node finishes successfully, it should print the result.
+- [x] Create a module that would perform some risky business. Start by creating a scheduler actor. When receiving a task to do, it will create a worker node that will perform the task. Given the nature of the task, the worker node is prone to crashes (task completion rate $50\%$). If the scheduler detects a crash, it will log it and restart the worker node. If the worker node finishes successfully, it should print the result.
 ```
 > Scheduler = create_scheduler()
 > Scheduler ! "Hello"
@@ -169,7 +169,7 @@ Task fail
 Task fail
 Task succesful: Miau
 ```
-- [ ] Create a module that would implement a doubly linked list where each node of the list is an actor.
+- [x] Create a module that would implement a doubly linked list where each node of the list is an actor.
 ```
 DLList = create_dllist ([3, 4, 5, 42]),
 traverse(DLList) -> [3, 4, 5, 42],
