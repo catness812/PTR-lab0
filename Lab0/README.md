@@ -175,3 +175,129 @@ DLList = create_dllist ([3, 4, 5, 42]),
 traverse(DLList) -> [3, 4, 5, 42],
 inverse(DLList) -> [42, 5, 4, 3].
 ```
+
+## Week 4 - The Actor is dead.. Long live the Actor
+
+### Minimal Task
+
+- [x] Create a supervised pool of identical worker actors. The number of actors is static, given at initialization. Workers should be individually addressable. Worker actors should echo any message they receive. If an actor dies (by receiving a “kill” message), it should be restarted by the supervisor. Logging is welcome.
+
+### Main Task
+
+- [x] Create a supervised processing line to clean messy strings. The first worker in the line would split the string by any white spaces (similar to Python’s `str.split` method). The second actor will lowercase all words and swap all `m’s` and `n’s` (you nomster!). The third actor will join back the sentence with one space between words (similar to Python’s `str.join` method). Each worker will receive as input the previous actor’s output, the last actor printing the result on screen. If any of the workers die because it encounters an error, the whole processing line needs to be restarted. Logging is welcome.
+
+### Bonus Task
+
+- [x] Write a supervised application that would simulate a sensor system in a car. There should be sensors for each wheel, the motor, the cabin and the chassis. If any sensor dies because of a random invalid measurement, it should be restarted. If, however, the main sensor supervisor system detects multiple crashes, it should deploy the airbags. A possible supervision tree is attached below.
+
+```mermaid
+graph TD 
+    A[Main Sensor Supervisor] --> B[Cabin Sensor];
+    A[Main Sensor Supervisor] --> C[Wheels Sensor Supervisor];
+    A[Main Sensor Supervisor] --> D[Motor Sensor];
+    A[Main Sensor Supervisor] --> E[Chassis Sensor];
+    C[Wheels Sensor Supervisor] --> F[Wheel 1 Sensor];
+    C[Wheels Sensor Supervisor] --> G[Wheel 2 Sensor];
+    C[Wheels Sensor Supervisor] --> H[Wheel 3 Sensor];
+    C[Wheels Sensor Supervisor] --> I[Wheel 4 Sensor];
+```
+
+- [x] Write an application that, in the context of actor supervision, would mimic the exchange in [that scene](https://www.youtube.com/watch?v=xwT60UbOZnI) from the movie Pulp Fiction.
+
+## Week 5 - May the Web be with you
+
+### Minimal Task
+
+- [x] Write an application that would visit [this link](https://quotes.toscrape.com/). Print out the HTTP response status code, response headers and response body.
+
+- [x] Continue your previous application. Extract all quotes from the HTTP response body. Collect the author of the quote, the quote text and tags. Save the data into a list of maps, each map representing a single quote.
+
+- [x] Continue your previous application. Persist the list of quotes into a file. Encode the data into JSON format. Name the file `quotes.json`.
+
+### Main Task
+
+- [x] Write an application that would implement a Star Wars-themed RESTful API. The API should implement the following HTTP methods:
+    - `GET /movies`
+    - `GET /movies/:id`
+    - `POST /movies`
+    - `PUT /movies/:id`
+    - `PATCH /movies/:id`
+    - `DELETE /movies/:id` 
+
+    Use a database to persist your data. Populate the database with the following information:
+
+    ```
+    [
+        {
+            "id": 1,
+            "title": "Star Wars: Episode IV - A New Hope",
+            "release_year": 1977,
+            "director": "George Lucas"
+        },
+        {
+            "id": 2,
+            "title": "Star Wars: Episode V - The Empire Strikes Back",
+            "release_year": 1980,
+            "director": "Irvin Kershner"
+        },
+        {
+            "id": 3,
+            "title": "Star Wars: Episode VI - Return of the Jedi",
+            "release_year": 1983,
+            "director": "Richard Marquand"
+        },
+        {
+            "id": 4,
+            "title": "Star Wars: Episode I - The Phantom Menace",
+            "release_year": 1999,
+            "director": "George Lucas"
+        },
+        {
+            "id": 5,
+            "title": "Star Wars: Episode II - Attack of the Clones",
+            "release_year": 2002,
+            "director": "George Lucas"
+        },
+        {
+            "id": 6,
+            "title": "Star Wars: Episode III - Revenge of the Sith",
+            "release_year": 2005,
+            "director": "George Lucas"
+        },
+        {
+            "id": 7,
+            "title": "Star Wars: The Force Awakens",
+            "release_year": 2015,
+            "director": "J. J. Abrams"
+        },
+        {
+            "id": 8,
+            "title": "Rogue One: A Star Wars Story",
+            "release_year": 2016,
+            "director": "Gareth Edwards"
+        },
+        {
+            "id": 9,
+            "title": "Star Wars: The Last Jedi",
+            "release_year": 2017,
+            "director": "Rian Johnson"
+        },
+        {
+            "id": 10,
+            "title": "Solo: A Star Wars Story",
+            "release_year": 2018,
+            "director": "Ron Howard"
+        },
+        {
+            "id": 11,
+            "title": "Star Wars: The Rise of Skywalker",
+            "release_year": 2019,
+            "director": "J. J. Abrams"
+        }
+    ]
+    ```
+
+### Bonus Task
+
+- [ ] Write an application that would use the Spotify API to manage user playlists. It should be able to create a new playlist, add songs to it and add custom playlist cover images.
+`You will probably get to play with OAuth 2.0 and Base64 encoding.`
