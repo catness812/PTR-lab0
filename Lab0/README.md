@@ -299,5 +299,5 @@ graph TD
 
 ### Bonus Task
 
-- [ ] Write an application that would use the Spotify API to manage user playlists. It should be able to create a new playlist, add songs to it and add custom playlist cover images.
+- [x] Write an application that would use the Spotify API to manage user playlists. It should be able to create a new playlist, add songs to it and add custom playlist cover images.
 `You will probably get to play with OAuth 2.0 and Base64 encoding.`

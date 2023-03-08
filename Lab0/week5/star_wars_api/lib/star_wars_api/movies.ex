@@ -30,5 +30,4 @@ defmodule StarWarsApi.Movies do
   def delete_movie(%StarWarsApi.Movies.Movie{} = movie) do
     StarWarsApi.Repo.delete(movie)
   end
-
 end

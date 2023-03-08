@@ -1,5 +1,4 @@
 defmodule DLL do
-
   def create([hd | tl]) do
     pid = spawn(DLL, :loop, [hd, nil, nil])
     append(pid, tl)
@@ -56,5 +55,4 @@ defmodule DLL do
   defp append(pid, tl), do: send(pid, {:append, tl})
   defp el_pid({_el, pid}), do: pid
   defp el_value({el, _pid}), do: el
-
 end

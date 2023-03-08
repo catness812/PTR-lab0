@@ -1,2 +1,7 @@
 **/.DS_Store
 **/*.beam
+**/*.json
+**/.env
+**/img
+**/*.pdf
+**/REPORT.md
